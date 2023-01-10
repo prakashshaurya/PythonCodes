@@ -45,7 +45,10 @@ def removeEmptyString(data,sentences):
 
 def mapMaker(str):
     return str.split("_ _")
-###########################preprocessing task ################################
+
+def csvWriter(keyList,MapKey,MapValue) :
+   pass
+########################### preprocessing task ################################
 
 sentences =   removeEmptyString(data,sentences)
 MapKey=[]
@@ -56,7 +59,7 @@ MapValue=[]
 tempMapValue =[]
 tempMapKey=[]
 
-for i in range(0, len(sentences)-1):
+for i in range(0, len(sentences)):
     if keyDetector(sentences[i]) :
         if len(tempMapKey)>0 :
             MapKey.append([tempMapKey[i] for i in range(0,len(tempMapKey)-1)])
@@ -69,6 +72,11 @@ for i in range(0, len(sentences)-1):
         tempMapKey.append(mapMaker(sentences[i])[0])
         tempMapValue.append(mapMaker(sentences[i])[1])
         
- 
+##########3merge final string#############################        
+
+MapKey.append([tempMapKey[i] for i in range(0,len(tempMapKey)-1)])       
+MapValue.append([tempMapValue[i] for i in range(0,len(tempMapValue)-1)])
+
+csvWriter(keyList,MapKey,MapValue) 
 
          
